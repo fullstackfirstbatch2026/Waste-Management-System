@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Waste Collection Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div>
+            <h1>♻️ Waste Collection Management</h1>
+            <p>Smart Waste Monitoring Dashboard</p>
+        </div>
+
+        <button onclick="loadDashboard()" class="refresh-btn">
+            🔄 Refresh
+        </button>
+    </header>
+
+
+    <!-- Dashboard Cards -->
+    <section class="cards">
+
+        <div class="card">
+            <div class="card-icon">🏠</div>
+            <div>
+                <h3>Households</h3>
+                <p id="householdCount">0</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">👷</div>
+            <div>
+                <h3>Workers</h3>
+                <p id="workerCount">0</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🗺️</div>
+            <div>
+                <h3>Zones</h3>
+                <p id="zoneCount">0</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🚛</div>
+            <div>
+                <h3>Collections</h3>
+                <p id="collectionCount">0</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Total Waste -->
+    <section class="panel">
+
+        <div class="panel-header">
+            <h2>📊 Total Waste by Zone</h2>
+        </div>
+
+        <div id="zoneWasteContainer" class="zone-grid">
+            <p>Loading...</p>
+        </div>
+
+    </section>
+
+
+    <!-- Above Average Zones -->
+    <section class="panel">
+
+        <div class="panel-header">
+            <h2>📈 Above-Average Waste Zones</h2>
+        </div>
+
+        <div id="aboveAverageContainer">
+            <p>Loading...</p>
+        </div>
+
+    </section>
+
+
+    <!-- Schedule Collection -->
+    <section class="panel">
+
+        <div class="panel-header">
+            <h2>➕ Schedule Waste Collection</h2>
+        </div>
+
+        <form id="collectionForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Household ID</label>
+                    <input
+                        type="number"
+                        id="householdId"
+                        required
+                        min="1"
+                        placeholder="Example: 1">
+                </div>
+
+                <div class="form-group">
+                    <label>Worker ID</label>
+                    <input
+                        type="number"
+                        id="workerId"
+                        required
+                        min="1"
+                        placeholder="Example: 1">
+                </div>
+
+                <div class="form-group">
+                    <label>Zone ID</label>
+                    <input
+                        type="number"
+                        id="zoneId"
+                        required
+                        min="1"
+                        placeholder="Example: 1">
+                </div>
+
+                <div class="form-group">
+                    <label>Collection Date</label>
+                    <input
+                        type="date"
+                        id="collectionDate"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label>Waste Volume (kg)</label>
+                    <input
+                        type="number"
+                        id="wasteVolume"
+                        required
+                        min="0"
+                        step="0.01"
+                        placeholder="Example: 20.50">
+                </div>
+
+            </div>
+
+            <button type="submit" class="submit-btn">
+                🚛 Schedule Collection
+            </button>
+
+        </form>
+
+        <div id="formMessage"></div>
+
+    </section>
+
+
+    <!-- Collections Table -->
+    <section class="panel">
+
+        <div class="panel-header">
+            <h2>🚛 Recent Collections</h2>
+        </div>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Household</th>
+                        <th>Worker</th>
+                        <th>Zone</th>
+                        <th>Date</th>
+                        <th>Waste</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="collectionsTable">
+                    <tr>
+                        <td colspan="7">Loading...</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>Waste Collection Management System</p>
+        <p>Spring Boot • MySQL • REST API</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
